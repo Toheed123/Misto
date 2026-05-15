@@ -38,6 +38,7 @@ export class SideMenuComponent {
             name : 'Order',
             navigationUrl : 'order',
             IconClass : 'Material',
+            
             IconName: 'add_shopping_cart'
         },
         {
@@ -68,6 +69,7 @@ export class SideMenuComponent {
     ngOnInit(){
         // this.sharedService.sideMenuName.subscribe((val) => {
         // });
+        console.log('side menu init', this.menuItems);
     }
 
     navigate(name: string) {
