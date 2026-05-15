@@ -39,7 +39,14 @@ export class SideMenuComponent {
             navigationUrl : 'order',
             IconClass : 'Material',
             IconName: 'add_shopping_cart'
+        },
+        {
+            name : 'Expenses',
+            navigationUrl : 'expences',
+            IconClass : 'Material',
+            IconName: 'add'
         }
+        
     ]
 
     constructor(
