@@ -1,0 +1,30 @@
+<div class="notifications">
+  @for (notification of notifications; track notification) {
+    <div class="notification" [ngClass]="className(notification)">
+      <ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+    </div>
+  }
+</div>
+
+<ng-template #notificationTpl let-notification="notification">
+  <div fxFlex fxLayout="row" (click)="close(notification)">
+    <div fxFlex="10%" class="icon-container">
+      <mat-icon class="icon">{{iconName(notification)}}</mat-icon>
+    </div>
+    <div fxFlex.gt-md="80%">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">{{notification.title}}</div>
+        <!-- <button mat-icon-button
+        (click)="close(notification)"
+        matTooltip="Close the notification"
+        matTooltipPosition="before">
+        <mat-icon>cancel</mat-icon>
+      </button>	 -->
+    </div>
+    <div class="message">{{notification.message}}</div>
+  </div>
+</div>
+
+
+
+</ng-template>

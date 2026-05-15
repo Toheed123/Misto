@@ -1,0 +1,144 @@
+<div class="main-container">
+  <mat-card class="example-card" appearance="outlined">
+    @if (isLoading) {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    <mat-card-header class="card-header">
+      <img  src="../../../assets/LOGO_1_WBG.png" >
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group mat-stretch-tabs="false" headerPosition="below" [selectedIndex]="selectedTabIndex">
+        <mat-tab >
+          <form [formGroup]="loginForm" class="form-container">
+            <mat-form-field fxFlex.gt-md="100%">
+              <mat-label>UserId </mat-label>
+              <input matInput formControlName="userName">
+              <mat-icon class="pd-0" matPrefix>person</mat-icon>
+              @if ((loginFormControls.userName.touched) && loginFormControls.userName.errors?.required) {
+                <mat-error class="pd-34">
+                  require
+                </mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field fxFlex.gt-md="100">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+              <mat-icon matPrefix class="pd-0">lock</mat-icon>
+              @if ((loginFormControls.password.touched) && loginFormControls.password.errors?.required) {
+                <mat-error class="pd-34">
+                  require
+                </mat-error>
+              }
+              <mat-hint align="end" (click)="changeTab(tabContainer.forgotPassword.tabIndex)" class="link" >Forgot Password?</mat-hint>
+            </mat-form-field>
+            <br>
+
+              <button mat-flat-button color="primary" [disabled]="isLoading" class="login-button" [class.loading]="isLoading" (click)="OnClick()">
+                <div class="loader" ></div>
+                <span class="button-text">Login</span>
+              </button>
+              <br>
+                <p>Don't have an account<span class="register-p" (click)="changeTab(tabContainer.signUp.tabIndex)"> Register</span></p>
+              </form>
+            </mat-tab>
+
+            <mat-tab>
+              <form [formGroup]="forgotPasswordForm"  class="form-container">
+                <mat-form-field fxFlex.gt-md="100">
+                  <mat-label>Email </mat-label>
+                  <input matInput formControlName="email">
+                  @if ((forgotPasswordFormControls.email.touched) ) {
+                    <mat-error class="pd-34">
+                      @if (forgotPasswordFormControls.email.errors?.required) {
+                        <mat-error>require</mat-error>
+                      }
+                    </mat-error>
+                  }
+                  <mat-icon class="pd-0" matPrefix>alternate_email</mat-icon>
+                </mat-form-field>
+
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <button mat-flat-button color="primary" [disabled]="isLoading" (click)="OnClick()">Verify</button>
+
+                  <button mat-stroked-button color="primary" type="button" (click)="cancel()">Cancel</button>
+                </div>
+              </form>
+            </mat-tab>
+
+            <mat-tab>
+              <form class="form-container" [formGroup]="signUpForm">
+
+                <mat-form-field fxFlex.gt-md="100%">
+                  <mat-label>Name </mat-label>
+                  <input matInput formControlName="Name">
+                  @if ((signUpFormControls.Name.touched) && signUpFormControls.Name.errors?.required) {
+                    <mat-error class="pd-34">
+                      require
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field fxFlex.gt-md="100%">
+                  <mat-label>Email </mat-label>
+                  <input matInput formControlName="Email">
+                  @if ((signUpFormControls.Email.touched) && signUpFormControls.Email.errors?.required) {
+                    <mat-error class="pd-34">
+                      require
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <div fxFlex.gt-md="100%" fxLayoutGap="10px">
+                  <mat-form-field fxFlex.gt-md="20%">
+                    <mat-label>ISD Code </mat-label>
+                    <input matInput formControlName="ISDCode">
+                    @if ((signUpFormControls.ISDCode.touched) && signUpFormControls.ISDCode.errors?.required) {
+                      <mat-error class="pd-34">
+                        require
+                      </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <mat-form-field fxFlex.gt-md="80%">
+                    <mat-label>Phone No</mat-label>
+                    <input matInput formControlName="PhoneNo">
+                    @if ((signUpFormControls.PhoneNo.touched) && signUpFormControls.PhoneNo.errors?.required) {
+                      <mat-error class="pd-34">
+                        require
+                      </mat-error>
+                    }
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field fxFlex.gt-md="100%">
+                  <mat-label>Password </mat-label>
+                  <input matInput formControlName="Password">
+                  @if ((signUpFormControls.Password.touched) && signUpFormControls.Password.errors?.required) {
+                    <mat-error class="pd-34">
+                      require
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field fxFlex.gt-md="100%">
+                  <mat-label>Confirm Password </mat-label>
+                  <input matInput formControlName="ConfirmPassword">
+                  @if ((signUpFormControls.ConfirmPassword.touched) && signUpFormControls.ConfirmPassword.errors?.required) {
+                    <mat-error class="pd-34">
+                      require
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <button mat-flat-button color="primary" [disabled]="isLoading" (click)="OnClick()">SignUp</button>
+                  <button mat-stroked-button color="primary" type="button" (click)="cancel()">Cancel</button>
+                </div>
+              </form>
+            </mat-tab>
+
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>

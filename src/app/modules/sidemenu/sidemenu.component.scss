@@ -1,0 +1,88 @@
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow-x: hidden;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.menu-container {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  color: antiquewhite;
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.menu-container:hover {
+  border-left: 3px solid red;
+  padding-left: 15px;
+}
+
+::ng-deep .warning {
+  background-color: yellowgreen !important;
+}
+
+.title {
+  color: antiquewhite;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  .title-text {
+    font-size: 20px;
+  }
+  .title-logo {
+    width: 25px;
+    height: 40px;
+    background-image: url("../../../assets/LOGO_1_WBG.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.my-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0px 0px 30px 0px;
+  .profile-picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      // object-fit: contain;
+    }
+  }
+  .profile-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: whitesmoke !important;
+    width: 100%;
+    align-items: center;
+    .dropdown-container{
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      mat-icon{
+        cursor: pointer;
+        margin-bottom: 3px;
+      }
+    }
+    .email-container{
+          filter: brightness(0.5);
+    }
+  }
+}

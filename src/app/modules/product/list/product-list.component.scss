@@ -1,0 +1,52 @@
+
+table {
+    width: 40%;
+  }
+  
+  tr.mat-mdc-footer-row td {
+    font-weight: bold;
+  }
+  
+  .main-container{
+    padding: 10px
+  }
+
+//   .table-containert{
+//     width: 50%
+//   }
+
+//Table Filter css
+
+.filter-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+  p{
+    font-size: 40px;
+    span{
+      color: grey;
+    }
+  }
+  .filter-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.search-btn{
+  background-color: #24252b !important;
+  color: #faebd7 !important;
+}
+
+.reset-btn{
+  background-color: #faebd7 !important;
+  color: #24252b!important;
+}
+
+.ml-10{
+  margin-left: 10px;
+}

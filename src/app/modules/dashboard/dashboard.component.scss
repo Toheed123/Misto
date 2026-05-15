@@ -1,0 +1,53 @@
+
+.main-container{
+    display: flex;
+    // justify-content: space-between;    
+}
+.example-card {
+    max-width: 300px;
+    margin-bottom: 8px;
+    box-shadow: 10px 10px #C6C5D0;
+    cursor: pointer;
+  } 
+
+  .img-size{
+    width: 80px;
+    height: 80px
+  }
+
+//   .color{
+//     background-color: lightgreen
+//   }
+.container{
+  display: flex;
+  align-items: center;
+}
+
+.pl-15{
+  padding-left: 15px;
+}
+
+.count{
+  font-weight: bold;
+}
+
+.chart-section{
+  display: flex;  
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
+.bar-chart{
+  width: 850px !important;
+  height: 400px !important;
+}
+
+.order-chart{
+  width: 370px;
+  height: 350px;
+}
+
+.main-container1{
+  padding: 20px;
+}
+

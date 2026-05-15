@@ -1,0 +1,157 @@
+<div class="main-container">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-accordion class="example-headers-align" multi fxFlex="50%">
+
+      <mat-expansion-panel (expandedChange)="expansiomChange($event, 'myProfile')" [expanded]="expandedAcc === 'myProfile'">
+        <mat-expansion-panel-header>
+          <mat-panel-title color="primary"><mat-icon>person</mat-icon> Account Information </mat-panel-title>
+          <!-- <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+
+      <form fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px grid"
+        [formGroup]="myAccountForm">
+
+        <mat-form-field fxFlex="100%">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="FirstName">
+          @if (myAccountFormControl.FirstName.invalid && (myAccountFormControl.FirstName.dirty || myAccountFormControl.FirstName.touched)) {
+            <mat-error
+              >
+              @if (myAccountFormControl.FirstName.hasError('require')) {
+                <mat-error>require</mat-error>
+              }
+              @if (myAccountFormControl.FirstName.hasError('Email')) {
+                <mat-error>invalid email
+                type</mat-error>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field fxFlex="50%">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" formControlName="FirstName">
+          @if (myAccountFormControl.FirstName.invalid && (myAccountFormControl.FirstName.dirty || myAccountFormControl.FirstName.touched)) {
+            <mat-error
+              >
+              @if (myAccountFormControl.FirstName.hasError('require')) {
+                <mat-error>require</mat-error>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field fxFlex="50%">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" formControlName="LastName">
+          @if (myAccountFormControl.LastName.invalid && (myAccountFormControl.LastName.dirty || myAccountFormControl.LastName.touched)) {
+            <mat-error
+              >
+              @if (myAccountFormControl.LastName.hasError('require')) {
+                <mat-error>require</mat-error>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <div fxFlex="100%" fxLayoutGap="20px grid">
+          <mat-form-field fxFlex="20%">
+            <mat-label>ISDCode</mat-label>
+            <input matInput type="text" formControlName="ISDCode">
+            @if (myAccountFormControl.ISDCode.invalid && (myAccountFormControl.ISDCode.dirty || myAccountFormControl.ISDCode.touched)) {
+              <mat-error
+                >
+                @if (myAccountFormControl.ISDCode.hasError('require')) {
+                  <mat-error>require</mat-error>
+                }
+              </mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field fxFlex="80%" class="pd-r">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="tel" formControlName="PhoneNumber">
+            @if (myAccountFormControl.PhoneNumber.invalid && (myAccountFormControl.PhoneNumber.dirty || myAccountFormControl.PhoneNumber.touched)) {
+              <mat-error
+                >
+                @if (myAccountFormControl.PhoneNumber.hasError('require')) {
+                  <mat-error>require</mat-error>
+                }
+                <!-- <mat-error *ngIf="myAccountFormControl.PhoneNumber.hasError('maxle')">require</mat-error> -->
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="100%" fxFlex="row wrap"  fxFlexAlign="end end">
+          <button mat-flat-button color="primary" ><mat-icon>done</mat-icon>Save</button>
+        </div>
+
+      </form>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (expandedChange)="expansiomChange($event, 'changePassword')" [expanded]="expandedAcc === 'changePassword'">
+      <mat-expansion-panel-header>
+        <mat-panel-title color="primary"><mat-icon>lock</mat-icon> Change Password </mat-panel-title>
+        <!-- <mat-panel-description>
+        Type your name and age
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+
+    <form fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px grid"
+      [formGroup]="changePasswordForm">
+
+      <mat-form-field fxFlex="100%">
+        <mat-label>Old password</mat-label>
+        <input matInput type="text" formControlName="OldPassword">
+        @if (changePasswordFormControl.OldPassword.invalid && (changePasswordFormControl.OldPassword.dirty || changePasswordFormControl.OldPassword.touched)) {
+          <mat-error
+            >
+            @if (changePasswordFormControl.OldPassword.hasError('require')) {
+              <mat-error>require</mat-error>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100%">
+        <mat-label>New password</mat-label>
+        <input matInput type="text" formControlName="NewPassword">
+        @if (changePasswordFormControl.NewPassword.invalid && (changePasswordFormControl.NewPassword.dirty || changePasswordFormControl.NewPassword.touched)) {
+          <mat-error
+            >
+            @if (changePasswordFormControl.NewPassword.hasError('require')) {
+              <mat-error>require</mat-error>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100%">
+        <mat-label>Repeat new password</mat-label>
+        <input matInput type="text" formControlName="RepeatPassword">
+        @if (changePasswordFormControl.RepeatPassword.invalid && (changePasswordFormControl.RepeatPassword.dirty || changePasswordFormControl.RepeatPassword.touched)) {
+          <mat-error
+            >
+            @if (changePasswordFormControl.RepeatPassword.hasError('require')) {
+              <mat-error>require</mat-error>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div fxFlex="100%"  fxFlexAlign="end end">
+        <button mat-flat-button color="primary"><mat-icon>done</mat-icon>Update</button>
+      </div>
+
+    </form>
+  </mat-expansion-panel>
+
+
+</mat-accordion>
+</div>
+</div>

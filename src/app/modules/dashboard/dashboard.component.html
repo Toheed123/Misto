@@ -1,0 +1,39 @@
+<div class="main-container1">
+  <div class="main-container" fxLayout="row" fxLayoutAlign="space-around center">
+    @for (data of dashboardContent; track data) {
+      <div style="width: 33.33%;">
+        <mat-card class="example-card color">
+          <mat-card-content>
+            <div class="container">
+              <div>
+                <img class="img-size" src='../../../assets/{{data.imagename}}'>
+              </div>
+              <div class="pl-15">
+                <p>{{data.name}}
+                  <p>
+                    @if (!data.amountYN) {
+                      <p class="count">{{data.Count}}</p>
+                    }
+                    @if (data.amountYN) {
+                      <p class="count">{{data.Count | currency }} </p>
+                    }
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        }
+      </div>
+      <div class="chart-section">
+        <div >
+          <canvas id="barchart" class="bar-chart">{{chart}}</canvas>
+        </div>
+        <div >
+          <canvas id="orderChart" class="order-chart">{{orderChart}}</canvas>
+        </div>
+
+      </div>
+
+
+
+    </div>

@@ -1,0 +1,67 @@
+ .example-card {
+    // max-width: 500px;
+    width: 450px;
+    height: auto;
+    border-radius: 15px;
+    padding: 20px 40px 20px;
+    img{
+      height: 250px;
+    }
+  }
+
+  .main-container {
+    background-image: url('../../../assets/login_background_img.png');
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat; 
+    height: 100vh;                
+    width: 100vw;                 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container{
+  display: flex !important;
+  flex-direction: column !important ;
+  overflow-y: hidden;
+}
+
+.pd-0{
+  padding-bottom: 0px  !important
+}
+
+.pd-34{
+  padding-left: 34px;
+}
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.link{
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0px;
+}
+
+::ng-deep .mat-mdc-tab-header{
+  display: none !important;
+}
+
+.register-p{
+  color: #673ab7;
+  cursor: pointer;
+}
+
+.modal-backdrop {
+  background-color: #008000;
+  opacity: 1.0 !important;
+  }
+
+//Loder Css
+
