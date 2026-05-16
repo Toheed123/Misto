@@ -1,5 +1,6 @@
 export const environment = {
-      appName: 'FlowHour',
-      storageType:'sessionStorage'
+      appName: 'Misto',
+      storageType:'sessionStorage',
+      apiUrl :'https://script.google.com/macros/',
 
 };

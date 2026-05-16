@@ -45,7 +45,7 @@ export class SideMenuComponent {
             name : 'Expenses',
             navigationUrl : 'expences',
             IconClass : 'Material',
-            IconName: 'add'
+            IconName: 'money_off'
         }
         
     ]
@@ -69,7 +69,6 @@ export class SideMenuComponent {
     ngOnInit(){
         // this.sharedService.sideMenuName.subscribe((val) => {
         // });
-        console.log('side menu init', this.menuItems);
     }
 
     navigate(name: string) {

@@ -1,4 +1,5 @@
 export const environment = {
-    appName: 'FlowHour',
-    storageType:'localStorage'
+    appName: 'Misto',
+    storageType:'localStorage',
+    apiUrl :'https://script.google.com/macros/',
 };

@@ -17,7 +17,7 @@ interface Transaction {
 })
 
 
-export class ProductListComponent{
+export class ProductListComponent {
   searchForm : FormGroup;
   filteredData : Transaction[]
     column = [
