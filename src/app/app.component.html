@@ -1,24 +1,24 @@
 @if ((authenticationService.getAuthResult)) {
-  <mat-drawer-container class="example-container">
-    <mat-drawer #drawer mode="side" class="sidenave-container" opened="true">
-      <!-- <div class="center">
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side" class="sidenave-container" opened="true">
+    <!-- <div class="center">
       <img src='../assets/toheed-wbg.png' class="logo">
       <span class="center-align">FlowHour</span><hr style="width: 50%;">
     </div> -->
     <app-sidemenu></app-sidemenu>
   </mat-drawer>
   <div>
-    <mat-toolbar  class="title-toolbar">
+    <mat-toolbar class="title-toolbar" color="primary">
       <mat-toolbar-row>
         <mat-icon (click)="drawer.toggle()" class="pd-8 color">menu</mat-icon>
         <div class="size">
-          <span>FLOWHOUR</span> &nbsp;
+          <span>{{title}}</span> &nbsp;
           @if (name) {
-            <span>
-              <mat-icon class="right-arrow">keyboard_arrow_right</mat-icon> &nbsp;
-              <!-- <mat-icon class="icon-size">{{iconName}}</mat-icon> -->
-              <span class="subtitle">{{name}}</span>
-            </span>
+          <span>
+            <mat-icon class="right-arrow">keyboard_arrow_right</mat-icon> &nbsp;
+            <!-- <mat-icon class="icon-size">{{iconName}}</mat-icon> -->
+            <span class="subtitle">{{name}}</span>
+          </span>
           }
         </div>
         <div class="login-btn">
@@ -29,13 +29,17 @@
     </mat-toolbar>
     <div class="empty-div pt-60px"></div>
     @if ((authenticationService.getAuthResult)) {
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
     }
     <app-notification></app-notification>
+    @if(appService.isLoading$ | async){
+    <div class="spinner-container">
+      <mat-spinner diameter="80"></mat-spinner>
+    </div>
+    }
   </div>
 </mat-drawer-container>
 }
 @if (!(authenticationService.getAuthResult)) {
-  <router-outlet ></router-outlet>
+<router-outlet></router-outlet>
 }
-

@@ -1,0 +1,10 @@
+{
+  "/googleapi": {
+    "target": "https://script.google.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/googleapi": ""
+    }
+  }
+}

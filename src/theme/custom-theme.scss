@@ -1,0 +1,87 @@
+// src/theme/custom-theme.scss
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// ========================================================
+// LIGHT THEME - Lavender + Cream
+// ========================================================
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+
+    // Lavender Primary
+    primary: mat.$violet-palette,
+
+    // Cream / Warm Secondary
+    tertiary: mat.$orange-palette,
+  ),
+
+  typography: (
+    plain-family: Roboto,
+    brand-family: Roboto,
+  ),
+
+  density: (
+    scale: 0,
+  )
+));
+
+// ========================================================
+// APPLY THEME
+// ========================================================
+
+html {
+
+  @include mat.all-component-themes($light-theme);
+
+  // Makes color="primary" work
+  @include mat.color-variants-backwards-compatibility($light-theme);
+}
+
+// ========================================================
+// CUSTOM APP COLORS
+// ========================================================
+
+:root {
+
+  // Main Brand Colors
+  --primary-color: #b8a4ff;
+  --secondary-color: #fff4df;
+
+  // Backgrounds
+  --background-color: #fffaf2;
+  --surface-color: #ffffff;
+
+  // Text
+  --text-color: #3d3452;
+
+  // Borders
+  --border-color: #e7dcff;
+
+  // Hover
+  --hover-color: #f4ecff;
+
+  // ====================================================
+  // Material 3 System Overrides
+  // ====================================================
+
+  // Primary
+  --mat-sys-primary: #9b87f5;
+  --mat-sys-on-primary: #ffffff;
+
+  // Secondary
+  --mat-sys-secondary: #f3dfb2;
+  --mat-sys-on-secondary: #4d3b00;
+
+  // Surface
+  --mat-sys-surface: #fffaf2;
+  --mat-sys-on-surface: #3d3452;
+
+  --mat-sys-surface-container: #ffffff;
+
+  // Outline
+  --mat-sys-outline: #d7c8ff;
+}

@@ -8,13 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  baseUrl = environment.apiUrl;
+  baseUrl = '/googleapi';
 
   constructor(private http: HttpClient) { 
   }  
 
-  Get(endpoint: string) : Observable<any> {
-    return this.http.get(this.baseUrl + endpoint);    
+  Get(endpoint: string, data: any) : Observable<any> {
+    return this.http.get(this.baseUrl + endpoint, data);    
   }
 
   Post(endpoint: string, data: any) {

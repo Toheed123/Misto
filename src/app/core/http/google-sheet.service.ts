@@ -7,17 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class GoogleSheetService {
 
-  url: string = 's/AKfycbweJaevtRzg1HBxCIPlO9MRgA1zBFdg6OXcmDp79PvDrWzIocIO6iCA0l6pSC7DwOaAVg/exec';
-  
+  url: string = '/macros/s/AKfycbyQ-2H9SGhWi3atxvCWtd21UGlSbtbr2eTEmmUeSneVj0cFHRYjJbyZrJuZbl4ghUM/exec';
 
   constructor(private apiServices: ApiService) { }
   
   getExpenceList() : Observable<any>{
-    return this.apiServices.Get(this.url);
+    return this.apiServices.Post(this.url, {
+      route: 'getExpenses',
+    });
   }
 
   addUser(data: any): Observable<any> {
-    return this.apiServices.Post(this.url, data);
+    return this.apiServices.Post(this.url, {
+      route: 'addExpense',
+      data: data
+    });
   }
 
   updateUser(data: any): Observable<any> {

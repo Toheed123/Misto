@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -32,7 +35,11 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule
+
   ]
 })
 export class ExpencesModule { }

@@ -27,6 +27,7 @@ import { NotificationService } from './core/service/notification.service';
 import { SharedModule } from './shared/component/shared.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatTabsModule,
     MatProgressBarModule,
     SharedModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
     // OrderModule
     // MatMenuModule;
   ],
