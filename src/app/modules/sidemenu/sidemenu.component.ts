@@ -75,12 +75,7 @@ export class SideMenuComponent {
         // this.sharedService.sideMenuName.next(name);
         let url = name.toLowerCase();        
         this.router.navigate([url], {relativeTo: this.route})
-        this.snackBarService.open('Added successfully!!!', '',{
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom',
-            duration : 100 * 1000,
-            panelClass: ['warning']
-          })
+        
     }
 
     logOut(){

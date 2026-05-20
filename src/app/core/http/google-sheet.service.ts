@@ -17,18 +17,32 @@ export class GoogleSheetService {
     });
   }
 
-  addUser(data: any): Observable<any> {
+  getExpenceById(id: any): Observable<any> {
+    return this.apiServices.Post(this.url, {
+      route: 'getExpenseById',
+      id: id
+    });
+  }
+
+  addExpense(data: any): Observable<any> {
     return this.apiServices.Post(this.url, {
       route: 'addExpense',
       data: data
     });
   }
 
-  updateUser(data: any): Observable<any> {
-    return this.apiServices.Put(this.url, data);
+  updateExpense(data: any): Observable<any> {
+    return this.apiServices.Post(this.url, {
+      route: 'updateExpense',
+      data: data
+    });
   }
 
-  deleteUser(data: any): Observable<any> {
-    return this.apiServices.Delete(this.url + '/' + data.id);
+  deleteExpense(data: any): Observable<any> {
+    console.log('Deleting expense with id:', data);
+    return this.apiServices.Post(this.url, {
+      route: 'deleteExpense',
+      id: data
+    });
   }
 }

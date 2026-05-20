@@ -1,31 +1,23 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/core/service/notification.service';
-import { NotificationType , Notification} from './notification';
+import { NotificationType, Notification } from './notification';
 
 @Component({
-    selector: 'app-notification',
-    templateUrl: './notification.component.html',
-    styleUrls: ['./notification.component.scss'],
-    standalone: false
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss'],
+  standalone: false
 })
 export class NotificationComponent {
 
   notifications: Notification[] = [];
   private _subscription: Subscription;
-  progress : number = 0
+  progress: number = 0
 
-  constructor(private _notificationSvc: NotificationService) {}
+  constructor(private _notificationSvc: NotificationService) { }
 
-private _addNotification(notification: Notification) {
-    this.notifications.push(notification);
-    if (notification.timeout !== 0) {
-      setTimeout(() => this.close(notification), notification.timeout);
-
-    }
-  }
-
- ngOnInit() {
+  ngOnInit() {
     this._subscription = this._notificationSvc.getObservable().subscribe(notification => this._addNotification(notification));
   }
 
@@ -33,12 +25,27 @@ private _addNotification(notification: Notification) {
     this._subscription.unsubscribe();
   }
 
+  private _addNotification(notification: Notification) {
+
+    this.notifications.push(notification);
+
+    if (notification.timeout && notification.timeout > 0) {
+
+      setTimeout(() => {
+
+        this.close(notification);
+
+      }, notification.timeout);
+
+    }
+  }
+
   close(notification: Notification) {
     this.notifications = this.notifications.filter(notif => notif.id !== notification.id);
   }
 
 
-className(notification: Notification): string {
+  className(notification: Notification): string {
 
     let style: string;
 

@@ -69,3 +69,11 @@
 .ml-10{
   margin-left: 10px;
 }
+
+.floating-add-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+

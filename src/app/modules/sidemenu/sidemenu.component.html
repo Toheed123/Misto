@@ -1,37 +1,46 @@
 <div class="main-container">
-  <div class="title">
-    <div class="title-text">{{appName}}</div>
-    <div class="title-logo"></div>
-  </div>
-  <div class="my-account">
-    <div class="profile-picture">
-      <img [src]="profileDetail.profilePicturePath">
+
+  <!-- BRAND -->
+  <div class="brand-container">
+
+    <div class="brand-logo">
+      <img src="../../../assets/logo.jpeg">
     </div>
-    <div class="profile-content">
-      <div class="dropdown-container">{{profileDetail.Name}}
-        <mat-icon [matMenuTriggerFor]="menu" title="more">arrow_drop_down</mat-icon>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="navigate('my-account')">
-            <mat-icon>account_circle</mat-icon>
-            <span>My Profile</span>
-          </button>
-          <button mat-menu-item (click)="navigate('my-account')">
-            <mat-icon>lock_reset</mat-icon>
-            <span>Change Password</span>
-          </button>
-          <button mat-menu-item (click)="logOut()">
-            <mat-icon>logout</mat-icon>
-            <span>LogOut</span>
-          </button>
-        </mat-menu>
+
+    <div class="brand-content">
+      <div class="brand-title">
+        Misto
       </div>
-      <div class="email-container">{{profileDetail.email}}</div>
+
+      <div class="brand-subtitle">
+        Admin Panel
+      </div>
     </div>
+
   </div>
-  @for (item of menuItems; track item) {
-    <div class="menu-container" (click)="navigate(item.navigationUrl)">
-      <mat-icon>{{item.IconName}}</mat-icon>
-      <span>{{item.name}}</span>
-    </div>
-  }
+
+  <!-- DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- MENU -->
+  <div class="menu-list">
+
+    @for (item of menuItems; track item) {
+
+      <div
+        class="menu-container"
+        routerLinkActive="active-menu"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="item.navigationUrl">
+
+        <mat-icon>{{ item.IconName }}</mat-icon>
+
+        <span>{{ item.name }}</span>
+
+      </div>
+
+    }
+
+  </div>
+
 </div>

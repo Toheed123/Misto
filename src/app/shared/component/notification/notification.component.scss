@@ -1,55 +1,130 @@
 .notifications {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
-  min-width: 400px;
-  max-width: 400px;
-  cursor: pointer;
-  
-    .notification {
-      margin: 5px;
-      border-radius: 5px;
-      color: #fff;
-      overflow: hidden;
-  
-      .title {
-        // background: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        font-size: 28px;
-      }
-  
-      .message {
-      padding: 0px 0px 10px 20px;
-      font-size: 19px;
-        overflow-y: auto;
-      }
-  
-      &.info {
-        background-color: rgba(189, 189, 189, 0.9) !important;
-      }
-  
-      &.success {
-        background-color: rgba(27, 158, 119, 0.9) !important;
-      }
-  
-      &.warning {
-        background-color: rgba(217, 95, 2, 0.9) !important;
-      }
-  
-      &.error {
-        background-color: rgba(246, 71, 71, 0.9) !important;
+  width: 400px;
+
+  .notification {
+    position: relative;
+    margin-top: 15px;
+    border-radius: 16px;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.25);
+
+    animation: slideIn 0.3s ease;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .notification-content {
+      display: flex;
+      align-items: flex-start;
+      padding: 18px;
+    }
+
+    .icon-container {
+      margin-right: 15px;
+      margin-top: 5px;
+
+      .icon {
+        font-size: 34px;
+        width: 34px;
+        height: 34px;
       }
     }
+
+    .text-content {
+      flex: 1;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .message {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    .close-btn {
+      width: 30px;
+      height: 30px;
+      color: white;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .progress-bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      width: 100%;
+      background: rgba(255,255,255,0.7);
+
+      animation-name: progress;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    &.info {
+      background: linear-gradient(135deg, #607d8b, #455a64);
+    }
+
+    &.success {
+      background: linear-gradient(135deg, #00b894, #00a383);
+    }
+
+    &.warning {
+      background: linear-gradient(135deg, #f39c12, #d68910);
+    }
+
+    &.error {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
   }
 
-  .icon{
-    font-size: 45px;
-    overflow: visible;
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
 
-  .icon-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}

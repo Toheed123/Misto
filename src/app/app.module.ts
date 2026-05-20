@@ -28,6 +28,7 @@ import { SharedModule } from './shared/component/shared.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CdkOverlayOrigin } from "@angular/cdk/overlay";
 
 
 @NgModule({
@@ -44,10 +45,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CommonModule,
     AppRoutingModule,
     HomeModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     MatIconModule,
-    MatSidenavModule,    
-    BrowserAnimationsModule, 
+    MatSidenavModule,
+    BrowserAnimationsModule,
     MatToolbarModule,
     ListModule,
     MatFormFieldModule,
@@ -63,7 +64,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
     // OrderModule
     // MatMenuModule;
-  ],
+    ,
+    CdkOverlayOrigin
+],
   exports : [
     MatIconModule,
     MatFormFieldModule,

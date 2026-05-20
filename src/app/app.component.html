@@ -1,45 +1,115 @@
 @if ((authenticationService.getAuthResult)) {
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="side" class="sidenave-container" opened="true">
-    <!-- <div class="center">
-      <img src='../assets/toheed-wbg.png' class="logo">
-      <span class="center-align">FlowHour</span><hr style="width: 50%;">
-    </div> -->
+
+<mat-drawer-container class="layout-container">
+
+  <!-- SIDEBAR -->
+  <mat-drawer
+    #drawer
+    mode="side"
+    class="sidenave-container"
+    
+    opened="true">
+
     <app-sidemenu></app-sidemenu>
+
   </mat-drawer>
-  <div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content-wrapper">
+
+    <!-- TOPBAR -->
     <mat-toolbar class="title-toolbar" color="primary">
-      <mat-toolbar-row>
-        <mat-icon (click)="drawer.toggle()" class="pd-8 color">menu</mat-icon>
-        <div class="size">
-          <span>{{title}}</span> &nbsp;
-          @if (name) {
-          <span>
-            <mat-icon class="right-arrow">keyboard_arrow_right</mat-icon> &nbsp;
-            <!-- <mat-icon class="icon-size">{{iconName}}</mat-icon> -->
-            <span class="subtitle">{{name}}</span>
+
+      <div class="toolbar-left">
+
+        <button
+          mat-icon-button
+          class="menu-btn"
+          (click)="drawer.toggle()">
+
+          <mat-icon>menu</mat-icon>
+
+        </button>
+
+        <div class="breadcrumb-container">
+
+          <span class="main-title">
+            {{ title }}
           </span>
+
+          @if (name) {
+
+            <div class="breadcrumb">
+
+              <mat-icon>
+                chevron_right
+              </mat-icon>
+
+              <span class="subtitle">
+                {{ name }}
+              </span>
+
+            </div>
+
           }
+
         </div>
-        <div class="login-btn">
-          <!-- <img src="../assets/logo.png" class="img" [matmenue]> -->
-          <!-- <mat-menu></mat-menu> -->
+
+      </div>
+
+      <!-- RIGHT SECTION -->
+      <div class="toolbar-right">
+
+        <button mat-icon-button class="topbar-icon">
+          <mat-icon>notifications</mat-icon>
+        </button>
+
+        <button mat-icon-button class="topbar-icon">
+          <mat-icon>dark_mode</mat-icon>
+        </button>
+
+        <div class="profile-mini">
+
+          <img
+            src="../../../assets/LOGO_3.jpg"
+            alt="profile">
+
+          <div class="profile-info">
+            <span class="profile-name">Joe Miller</span>
+            <span class="profile-role">Admin</span>
+          </div>
+
         </div>
-      </mat-toolbar-row>
+
+      </div>
+
     </mat-toolbar>
-    <div class="empty-div pt-60px"></div>
-    @if ((authenticationService.getAuthResult)) {
-    <router-outlet></router-outlet>
-    }
-    <app-notification></app-notification>
-    @if(appService.isLoading$ | async){
-    <div class="spinner-container">
-      <mat-spinner diameter="80"></mat-spinner>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-container">
+
+      @if ((authenticationService.getAuthResult)) {
+        <router-outlet></router-outlet>
+      }
+
     </div>
+
+    <app-notification></app-notification>
+
+    @if(appService.isLoading$ | async){
+
+      <div class="spinner-container">
+        <mat-spinner diameter="70"></mat-spinner>
+      </div>
+
     }
+
   </div>
+
 </mat-drawer-container>
+
 }
+
 @if (!(authenticationService.getAuthResult)) {
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 }

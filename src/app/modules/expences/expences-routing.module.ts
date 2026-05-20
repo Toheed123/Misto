@@ -7,7 +7,7 @@ import { ExpencesDetailsComponent } from './details/expences-details.component';
 const routes: Routes = [
   { path : '', component: ExpencesListComponent, children : [
     { path : 'add', component : ExpencesAddComponent },
-    { path : ':id', component : ExpencesDetailsComponent}
+    { path : 'edit/:id', component : ExpencesDetailsComponent}
   ]}
 ];
 

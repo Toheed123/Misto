@@ -15,8 +15,8 @@
 
                 <mat-form-field fxFlex="50%">
                     <mat-label>Expense Type</mat-label>
-                    <mat-select formControlName="ExpenceType">
-                        @for (type of expenceType(); track type) {
+                    <mat-select formControlName="ExepenceType">
+                        @for (type of ExepenceType(); track type) {
                         <mat-option [value]="type.Value">{{type.Name}}</mat-option>
                         }
                     </mat-select>

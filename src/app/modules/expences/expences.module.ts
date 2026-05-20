@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmDialogModule } from 'src/app/shared/component/confirm-dialog/confirm-dialog.module';
 
 
 @NgModule({
@@ -38,8 +39,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSidenavModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    ConfirmDialogModule
   ]
 })
 export class ExpencesModule { }

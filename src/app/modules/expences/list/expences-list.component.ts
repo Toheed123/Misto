@@ -1,10 +1,13 @@
 
 import { Component, signal } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { debounceTime, finalize, take } from 'rxjs';
 import { GoogleSheetService } from 'src/app/core/http/google-sheet.service';
 import { AppService } from 'src/app/core/service/app.service';
+import { NotificationService } from 'src/app/core/service/notification.service';
+import { ConfirmDialogComponent } from 'src/app/shared/component/confirm-dialog/confirm-dialog.component';
 
 
 interface Transaction {
@@ -29,7 +32,8 @@ export class ExpencesListComponent {
     { columnDefination: 'Amount', visibleYN: true },
     { columnDefination: 'Payment Method', visibleYN: true },
     { columnDefination: 'Transaction Id', visibleYN: true },
-    { columnDefination: 'Description', visibleYN: true }
+    { columnDefination: 'Description', visibleYN: true },
+    { columnDefination: 'ActionBtn', visibleYN: true }
   ]; 
 
   constructor(
@@ -37,6 +41,8 @@ export class ExpencesListComponent {
     private router: Router,
     private route: ActivatedRoute,
     private appService: AppService,
+    private dialiog: MatDialog,
+    private snackbarService : NotificationService,
     private googleSheetService: GoogleSheetService,
 
   ) {
@@ -45,6 +51,13 @@ export class ExpencesListComponent {
 
   ngOnInit() {
     this.getExpenceList();
+
+    this.appService.refreshMainMenu$.subscribe((refresh) => {
+      if(refresh){
+        this.getExpenceList();
+        this.appService.setRefreshMainMenu(false);
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -84,14 +97,57 @@ export class ExpencesListComponent {
   }
 
   getExpenceList() {
-    this.appService.setLoading(true);
+    setTimeout(() => {
+      this.appService.setLoading(true);
+    })
     this.googleSheetService.getExpenceList()
       .pipe(take(1), finalize(() => this.appService.setLoading(false)))
       .subscribe((res) => {
         if(res && res.State ){
           this.dataSource.set(res.Data ?? []);
         }else{      
+          this.snackbarService.error('Error', 'Failed to fetch expence list');
         }
       })
+  }
+
+  editClicked(row: any){
+    this.router.navigate([`edit/${row.ExepenceId}`], { relativeTo: this.route });
+
+  }
+
+  deleteClicked(row: any){
+    setTimeout(() => {
+      this.appService.setLoading(true);
+    });
+    this.googleSheetService.deleteExpense(row.ExepenceId)
+      .pipe(take(1), finalize(() => this.appService.setLoading(false)))
+      .subscribe((res) => {
+        if(res && res.State ){
+          this.getExpenceList();
+          this.snackbarService.success('Success', 'Expence deleted successfully');
+        }else{
+          this.snackbarService.error('Error', 'Failed to delete expence');
+        }
+      }, (error) => {
+        this.snackbarService.error('Error', 'Failed to delete expence');
+        console.error('Delete error', error);
+      })
+  }
+
+  confirmDialog(entity: any){
+    const dialogRef = this.dialiog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Confirm Delete',
+        message: `Are you sure you want to delete this record?`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.deleteClicked(entity);
+      }
+    });
   }
 }
