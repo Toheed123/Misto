@@ -1,16 +1,17 @@
- .example-card {
+     .login-card {
     // max-width: 500px;
     width: 450px;
     height: auto;
     border-radius: 15px;
     padding: 20px 40px 20px;
+    background: transparent ;
     img{
       height: 250px;
     }
   }
 
   .main-container {
-    background-image: url('../../../assets/login_background_img.png');
+    background-image: url('../../../assets/login-background.png');
     background-size: cover;
     background-position: center;  
     background-repeat: no-repeat; 
@@ -24,6 +25,7 @@
 .form-container{
   display: flex !important;
   flex-direction: column !important ;
+  gap: 10px;
   overflow-y: hidden;
 }
 
@@ -65,3 +67,7 @@
 
 //Loder Css
 
+.error-message {
+  color: red;
+  // margin-top: 10px;
+}

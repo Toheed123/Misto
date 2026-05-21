@@ -4,18 +4,17 @@
 
 @include mat.core();
 
-// ========================================================
-// LIGHT THEME - Lavender + Cream
-// ========================================================
+//////////////////////////////////////////////////////////
+// MATERIAL THEME
+//////////////////////////////////////////////////////////
 
 $light-theme: mat.define-theme((
   color: (
     theme-type: light,
 
-    // Lavender Primary
+    // Use official palette
     primary: mat.$violet-palette,
 
-    // Cream / Warm Secondary
     tertiary: mat.$orange-palette,
   ),
 
@@ -29,59 +28,86 @@ $light-theme: mat.define-theme((
   )
 ));
 
-// ========================================================
+//////////////////////////////////////////////////////////
 // APPLY THEME
-// ========================================================
+//////////////////////////////////////////////////////////
 
 html {
 
   @include mat.all-component-themes($light-theme);
 
-  // Makes color="primary" work
   @include mat.color-variants-backwards-compatibility($light-theme);
 }
 
-// ========================================================
+//////////////////////////////////////////////////////////
 // CUSTOM APP COLORS
-// ========================================================
+//////////////////////////////////////////////////////////
 
 :root {
 
-  // Main Brand Colors
-  --primary-color: #b8a4ff;
-  --secondary-color: #fff4df;
+  //////////////////////////////////////////////////////
+  // PRIMARY (Soft Lavender)
+  //////////////////////////////////////////////////////
 
-  // Backgrounds
-  --background-color: #fffaf2;
+  --primary-color: #bda3f5;
+
+  --primary-dark: #9b87f5;
+
+  --primary-light: #efe4ff;
+
+  //////////////////////////////////////////////////////
+  // SECONDARY (Cream)
+  //////////////////////////////////////////////////////
+
+  --secondary-color: #fff1d8;
+
+  --secondary-dark: #f3d59c;
+
+  //////////////////////////////////////////////////////
+  // BACKGROUNDS
+  //////////////////////////////////////////////////////
+
+  --background-color: #fcfaf7;
+
   --surface-color: #ffffff;
 
-  // Text
-  --text-color: #3d3452;
+  --surface-soft: #f8f5ff;
 
-  // Borders
-  --border-color: #e7dcff;
+  //////////////////////////////////////////////////////
+  // TEXT
+  //////////////////////////////////////////////////////
 
-  // Hover
-  --hover-color: #f4ecff;
+  --text-color: #43385b;
 
-  // ====================================================
-  // Material 3 System Overrides
-  // ====================================================
+  --text-light: #7d7396;
 
-  // Primary
-  --mat-sys-primary: #9b87f5;
+  //////////////////////////////////////////////////////
+  // BORDERS
+  //////////////////////////////////////////////////////
+
+  --border-color: #e9e1ff;
+
+  //////////////////////////////////////////////////////
+  // HOVER
+  //////////////////////////////////////////////////////
+
+  --hover-color: #f3edff;
+
+  //////////////////////////////////////////////////////
+  // MATERIAL OVERRIDES
+  //////////////////////////////////////////////////////
+
+  --mat-sys-primary: #ae81b6;
+
   --mat-sys-on-primary: #ffffff;
 
-  // Secondary
-  --mat-sys-secondary: #f3dfb2;
-  --mat-sys-on-secondary: #4d3b00;
+  --mat-sys-secondary: #fff1d8;
 
-  // Surface
-  --mat-sys-surface: #fffaf2;
-  --mat-sys-on-surface: #3d3452;
+  --mat-sys-on-secondary: #5e4300;
 
-  --mat-sys-surface-container: #ffffff;
+  --mat-sys-surface: #fcfaf7;
 
-  // Outline
-  --mat-sys-outline: #d7c8ff;
+  --mat-sys-on-surface: #43385b;
+
+  --mat-sys-outline: #ddd2ff;
 }

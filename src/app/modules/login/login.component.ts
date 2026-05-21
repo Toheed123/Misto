@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
+import { LoginService } from 'src/app/core/service/login.service';
 import { NotificationService } from 'src/app/core/service/notification.service';
 
 @Component({
@@ -16,11 +17,12 @@ export class LoginComponent {
   signUpForm: FormGroup;
   selectedTabIndex: number = 0;
   isLoading: boolean = false;
+  errorMessage: string = '';
   authResult: any = {
-    AuthUser: {
+  AuthUser: {
       FirstName: 'Toheed',
       LastName: 'Shaikh',
-      Email: 'toheeed@workFlow.com',
+      Email: 'toheeed@misto.com',
       PhoneNumber: 9898876543,
       AuthUserId: 145,
     },
@@ -44,7 +46,7 @@ export class LoginComponent {
         IconName: 'add_shopping_cart',
       },
     ],
-    AppName: 'FlewHour',
+    AppName: 'Misto',
   };
 
   tabContainer = {
@@ -62,6 +64,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
+    private loginService: LoginService,
     private snackBarService: NotificationService
   ) {
     this.loginForm = this.formBuilder.group({
@@ -105,14 +108,29 @@ export class LoginComponent {
   }
 
   OnClick() {
-    this.isLoading = true;
-    setTimeout(() => {
+    // this.isLoading = true;
+    // setTimeout(() => {
       
-      // this.authenticationService.isLogin.next(true);
-      this.authenticationService.setIsLoggedIn(true);
-      this.authenticationService.setAuthResult(this.authResult);
-      this.router.navigate(['./']);
-      this.isLoading = false;
-    },);
+    //   // this.authenticationService.isLogin.next(true);
+    //   this.authenticationService.setIsLoggedIn(true);
+    //   this.authenticationService.setAuthResult(this.authResult);
+    //   this.router.navigate(['./']);
+    //   this.isLoading = false;
+    // },);
+
+    if(this.loginForm.valid){
+      this.isLoading = true;
+      const { userName, password } = this.loginForm.value;
+      const user = this.loginService.credentials.find((cred) => cred.userName === userName && cred.password === password);
+      if (user) {
+        this.authenticationService.setIsLoggedIn(true);
+        this.authenticationService.setAuthResult(user.AuthUser);
+        this.router.navigate(['./']);
+        this.isLoading = false;
+      } else {
+        this.errorMessage = 'Invalid username or password';
+        this.isLoading = false;
+      }
+    }
   }
 }

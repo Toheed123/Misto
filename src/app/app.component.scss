@@ -17,18 +17,19 @@
 //////////////////////////////////////////////////////
 
 .sidenave-container {
-  width: 260px !important;
+  width: 200px !important;
 
   border-right: none !important;
 
   background: transparent !important;
 }
 
-//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 // TOPBAR
 //////////////////////////////////////////////////////
 
 .title-toolbar {
+
   position: sticky;
   top: 0;
 
@@ -42,16 +43,22 @@
 
   padding: 0 24px;
 
-  background: rgba(255,255,255,0.75);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(174,129,182,0.92) 0%,
+      rgba(196,155,203,0.88) 50%,
+      rgba(255,241,216,0.85) 100%
+    );
 
   backdrop-filter: blur(14px);
 
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom:
+    1px solid rgba(255,255,255,0.25);
 
   box-shadow:
-    0 4px 20px rgba(0,0,0,0.04);
+    0 4px 24px rgba(174,129,182,0.18);
 }
-
 //////////////////////////////////////////////////////
 // LEFT SECTION
 //////////////////////////////////////////////////////

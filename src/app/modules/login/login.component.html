@@ -1,16 +1,16 @@
 <div class="main-container">
-  <mat-card class="example-card" appearance="outlined">
+  <mat-card class="login-card" appearance="outlined">
     @if (isLoading) {
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     }
     <mat-card-header class="card-header">
-      <img  src="../../../assets/LOGO_1_WBG.png" >
+      <img  src="../../../assets/M-WBG.png" >
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group mat-stretch-tabs="false" headerPosition="below" [selectedIndex]="selectedTabIndex">
         <mat-tab >
           <form [formGroup]="loginForm" class="form-container">
-            <mat-form-field fxFlex.gt-md="100%">
+            <mat-form-field fxFlex.gt-md="100%" appearance="outline">
               <mat-label>UserId </mat-label>
               <input matInput formControlName="userName">
               <mat-icon class="pd-0" matPrefix>person</mat-icon>
@@ -21,7 +21,7 @@
               }
             </mat-form-field>
 
-            <mat-form-field fxFlex.gt-md="100">
+            <mat-form-field fxFlex.gt-md="100" appearance="outline">
               <mat-label>Password</mat-label>
               <input matInput type="password" formControlName="password">
               <mat-icon matPrefix class="pd-0">lock</mat-icon>
@@ -33,13 +33,15 @@
               <mat-hint align="end" (click)="changeTab(tabContainer.forgotPassword.tabIndex)" class="link" >Forgot Password?</mat-hint>
             </mat-form-field>
             <br>
-
+            
+            @if (errorMessage) {
+              <p class="error-message">{{ errorMessage }}</p>
+            }
               <button mat-flat-button color="primary" [disabled]="isLoading" class="login-button" [class.loading]="isLoading" (click)="OnClick()">
                 <div class="loader" ></div>
                 <span class="button-text">Login</span>
               </button>
-              <br>
-                <p>Don't have an account<span class="register-p" (click)="changeTab(tabContainer.signUp.tabIndex)"> Register</span></p>
+                <p class="pd-0">Don't have an account<span class="register-p" (click)="changeTab(tabContainer.signUp.tabIndex)"> Register</span></p>
               </form>
             </mat-tab>
 
