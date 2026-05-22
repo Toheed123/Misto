@@ -1,0 +1,266 @@
+<div class="main-container">
+
+    <router-outlet></router-outlet>
+
+    <div class="table-containert">
+
+        <!-- SEARCH -->
+        <div>
+            <form [formGroup]="searchForm"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  fxLayoutGap="20px">
+
+                <mat-form-field fxFlex="300px"
+                                class="example-full-width ml-10"
+                                appearance="outline">
+
+                    <mat-label>Search Order</mat-label>
+
+                    <input matInput formControlName="searchInput">
+
+                    <span matPrefix class="ml-10">
+                        <mat-icon>search</mat-icon>
+                    </span>
+
+                </mat-form-field>
+
+            </form>
+        </div>
+
+        <!-- TABLE -->
+        <table mat-table
+               [dataSource]="dataSource()"
+               class="mat-elevation-z8"
+               [ngClass]="dataSource().length > 0 ? 'table-view' : 'table-hide' ">
+
+            <!-- Order Id -->
+            <ng-container matColumnDef="OrderId">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Order Id
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.OrderId }}
+                </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Date">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Date
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.Date }}
+                </td>
+
+            </ng-container>
+            
+
+            <!-- Order Status -->
+            <ng-container matColumnDef="OrderStatus">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Order Status
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.OrderStatus }}
+                </td>
+
+            </ng-container>
+
+            <!-- Payment Method -->
+            <ng-container matColumnDef="PaymentMethod">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Payment Method
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.PaymentMethod }}
+                </td>
+
+            </ng-container>
+
+            <!-- Payment Status -->
+            <ng-container matColumnDef="PaymentStatus">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Payment Status
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.PaymentStatus }}
+                </td>
+
+            </ng-container>
+
+            <!-- Delivery Address -->
+            <ng-container matColumnDef="DeliveryAddress">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Delivery Address
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.DeliveryAddress }}
+                </td>
+
+            </ng-container>
+
+            <!-- Description -->
+            <ng-container matColumnDef="Description">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Description
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.Description }}
+                </td>
+
+            </ng-container>
+
+            <!-- Product Id -->
+            <ng-container matColumnDef="ProductId">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Product Id
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.ProductId }}
+                </td>
+
+            </ng-container>
+
+            <!-- Product Name -->
+            <ng-container matColumnDef="ProductName">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Product Name
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.ProductName }}
+                </td>
+
+            </ng-container>
+
+            <!-- Quantity -->
+            <ng-container matColumnDef="Quantity">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Quantity
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.Quantity }}
+                </td>
+
+            </ng-container>
+
+            <!-- Order Type -->
+            <ng-container matColumnDef="OrderType">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Order Type
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.OrderType }}
+                </td>
+
+            </ng-container>
+
+            <!-- Total Amount -->
+            <ng-container matColumnDef="TotalAmount">
+
+                <th mat-header-cell *matHeaderCellDef>
+                    Total Amount
+                </th>
+
+                <td mat-cell *matCellDef="let order">
+                    {{ order.TotalAmount | currency:'INR' }}
+                </td>
+
+            </ng-container>
+
+            <!-- ACTION BUTTON -->
+            <ng-container matColumnDef="ActionBtn">
+
+                <th mat-header-cell *matHeaderCellDef></th>
+
+                <td mat-cell *matCellDef="let order">
+
+                    <div>
+
+                        <button mat-icon-button
+                                color="primary"
+                                (click)="editClicked(order)">
+
+                            <mat-icon>edit</mat-icon>
+
+                        </button>
+
+                        <button mat-icon-button
+                                color="warn"
+                                (click)="confirmDialog(order)">
+
+                            <mat-icon>delete</mat-icon>
+
+                        </button>
+
+                        <button mat-icon-button
+                                (click)="invoiceClicked(order)">
+
+                            <mat-icon>receipt</mat-icon>
+
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </ng-container>
+
+            <!-- HEADER -->
+            <tr mat-header-row
+                *matHeaderRowDef="getColumnDefination()">
+            </tr>
+
+            <!-- ROW -->
+            <tr mat-row
+                *matRowDef="let row; columns: getColumnDefination();">
+            </tr>
+
+        </table>
+
+        <!-- NO RECORD -->
+        @if(dataSource().length == 0) {
+
+        <div class="no-record">
+
+            <p>No records found</p>
+
+        </div>
+
+        }
+
+    </div>
+
+</div>
+
+<!-- FLOATING BUTTON -->
+<button mat-fab
+        color="primary"
+        class="floating-add-btn"
+        (click)="addClicked()">
+
+    <mat-icon>add</mat-icon>
+
+</button>

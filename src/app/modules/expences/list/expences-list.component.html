@@ -12,12 +12,16 @@
             </form>
         </div> -->
         <div>
-            <form [formGroup]="searchForm" fxFlex="300px">
-                <mat-form-field class="example-full-width ml-10" appearance="outline" fxFlex="100%">
+            <form [formGroup]="searchForm" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+
+
+                <mat-form-field fxFlex="300px" class="example-full-width ml-10" appearance="outline" fxFlex="100%">
                     <mat-label>Search</mat-label>
                     <input matInput formControlName="searchInput">
                     <span matPrefix class="ml-10"><mat-icon>search</mat-icon></span>
                 </mat-form-field>
+
+
             </form>
 
         </div>

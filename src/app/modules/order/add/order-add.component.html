@@ -1,0 +1,262 @@
+<div @rightSlider>
+
+    <!-- BACKDROP -->
+    <div class="backdrop" (click)="back()"></div>
+
+    <!-- SLIDER -->
+    <div class="slider main-container">
+
+        <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start">
+
+            <form fxFlex="90" [formGroup]="form" fxLayout="row wrap" fxLayoutAlign="start start"
+                fxLayoutGap="10px grid">
+
+                <!-- ===================================== -->
+                <!-- ORDER STATUS -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="50%">
+
+                    <mat-label>Date</mat-label>
+
+                    <input matInput [matDatepicker]="picker" formControlName="Date">
+
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+
+                    <mat-datepicker-toggle matIconSuffix [for]="picker">
+                    </mat-datepicker-toggle>
+
+                    <mat-datepicker #picker></mat-datepicker>
+
+                </mat-form-field>
+
+                <mat-form-field fxFlex="50%">
+
+                    <mat-label>Order Status</mat-label>
+
+                    <mat-select formControlName="OrderStatus">
+
+                        @for (status of orderStatusList(); track status) {
+
+                        <mat-option [value]="status.Value">
+
+                            {{status.Name}}
+
+                        </mat-option>
+
+                        }
+
+                    </mat-select>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- PAYMENT STATUS -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="50%">
+
+                    <mat-label>Payment Status</mat-label>
+
+                    <mat-select formControlName="PaymentStatus">
+
+                        @for (status of paymentStatusList(); track status) {
+
+                        <mat-option [value]="status.Value">
+
+                            {{status.Name}}
+
+                        </mat-option>
+
+                        }
+
+                    </mat-select>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- PAYMENT METHOD -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="50%">
+
+                    <mat-label>Payment Method</mat-label>
+
+                    <mat-select formControlName="PaymentMethod">
+
+                        @for (method of paymentMethods(); track method) {
+
+                        <mat-option [value]="method.Value">
+
+                            {{method.Name}}
+
+                        </mat-option>
+
+                        }
+
+                    </mat-select>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- ORDER TYPE -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="50%">
+
+                    <mat-label>Order Type</mat-label>
+
+                    <mat-select formControlName="OrderType">
+
+                        @for (type of orderTypeList(); track type) {
+
+                        <mat-option [value]="type.Value">
+
+                            {{type.Name}}
+
+                        </mat-option>
+
+                        }
+
+                    </mat-select>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- DELIVERY ADDRESS -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="100%">
+
+                    <mat-label>Delivery Address</mat-label>
+
+                    <textarea matInput rows="3" formControlName="DeliveryAddress">
+                    </textarea>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- DESCRIPTION -->
+                <!-- ===================================== -->
+
+                <mat-form-field fxFlex="100%">
+
+                    <mat-label>Description</mat-label>
+
+                    <textarea matInput rows="2" formControlName="Description">
+                    </textarea>
+
+                </mat-form-field>
+
+                <!-- ===================================== -->
+                <!-- PRODUCTS -->
+                <!-- ===================================== -->
+
+                <div fxFlex="100%" formArrayName="Products">
+
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-10">
+
+                        <h3>Products</h3>
+
+                        <!-- <button mat-flat-button color="primary" type="button" (click)="addProduct()">
+
+                            <mat-icon>add</mat-icon>
+
+                            Add Product
+
+                        </button> -->
+
+                    </div>
+
+                    <!-- PRODUCT LOOP -->
+
+                    @for(product of products.controls; let i = $index; track i){
+
+                    <div [formGroupName]="i" class="product-card" fxLayout="row wrap" fxLayoutGap="10px grid">
+
+                        <!-- PRODUCT ID -->
+
+                        <mat-form-field fxFlex="25%">
+
+                            <mat-label>Product Id</mat-label>
+
+                            <input matInput formControlName="ProductId">
+
+                        </mat-form-field>
+
+                        <!-- PRODUCT NAME -->
+
+                        <mat-form-field fxFlex="25%">
+
+                            <mat-label>Product Name</mat-label>
+
+                            <input matInput formControlName="ProductName">
+
+                        </mat-form-field>
+
+                        <!-- QUANTITY -->
+
+                        <mat-form-field fxFlex="20%">
+
+                            <mat-label>Quantity</mat-label>
+
+                            <input matInput type="number" formControlName="Quantity">
+
+                        </mat-form-field>
+
+                        <!-- TOTAL AMOUNT -->
+
+                        <mat-form-field fxFlex="20%">
+
+                            <mat-label>Amount</mat-label>
+
+                            <input matInput type="number" formControlName="Amount">
+
+                        </mat-form-field>
+
+                        <!-- DELETE BUTTON -->
+
+                        <div fxFlex="5%" fxLayout="row" fxLayoutAlign="center center">
+
+                            <button mat-icon-button color="warn" type="button" (click)="removeProduct(i)">
+
+                                <mat-icon>delete</mat-icon>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    }
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- BUTTONS -->
+                <!-- ===================================== -->
+
+                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+
+                    <button mat-stroked-button color="primary" type="button" (click)="back()">
+
+                        Cancel
+
+                    </button>
+
+                    <button mat-flat-button color="primary" type="button" [disabled]="form.invalid"
+                        (click)="onSubmit()">
+
+                        Submit
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

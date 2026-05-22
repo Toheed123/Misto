@@ -1,0 +1,101 @@
+<div @rightSlider>
+
+    <!-- BACKDROP -->
+    <div class="backdrop" (click)="back()"></div>
+
+    <!-- SLIDER -->
+    <div class="slider main-container">
+        <!-- <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start"> -->
+            
+
+        <div  class="invoice-print-area" *ngIf="order">
+
+            <!-- EVERYTHING INSIDE THIS ONLY WILL PRINT -->
+            <div class="invoice-container">
+
+                <!-- HEADER -->
+                <div class="invoice-header">
+
+                    <div>
+                        <h1>INVOICE</h1>
+                        <p>Order ID: {{ order.OrderId }}</p>
+                        <p>Date: {{ order.Date }}</p>
+                    </div>
+
+                    <div class="brand">
+                        <h2>Misto</h2>
+                        <p>Mumbai, India</p>
+                        <p>support@misto.com</p>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <!-- INFO -->
+                <div class="info-section">
+
+                    <div>
+                        <h3>Bill To</h3>
+                        <p>{{ order.DeliveryAddress }}</p>
+                    </div>
+
+                    <div>
+                        <p>Status: {{ order.OrderStatus }}</p>
+                        <p>Payment: {{ order.PaymentStatus }}</p>
+                        <p>Method: {{ order.PaymentMethod }}</p>
+                    </div>
+
+                </div>
+
+                <!-- TABLE -->
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>ID</th>
+                            <th>Qty</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let item of products">
+                            <td>{{ item.ProductName }}</td>
+                            <td>{{ item.ProductId }}</td>
+                            <td>{{ item.Quantity }}</td>
+                            <td>₹ {{ item.TotalAmount }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- TOTAL -->
+                <div class="total-box">
+
+                    <div>
+                        <p><b>Type:</b> {{ order.OrderType }}</p>
+                        <p><b>Description:</b> {{ order.Description }}</p>
+                    </div>
+
+                    <div class="total">
+                        <h2>Total: ₹ {{ order.TotalAmount }}</h2>
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+         <div class="print-container">
+                <button mat-flat-button color="primary" type="button" [disabled]="!order"
+                        (click)="printInvoice()">
+                        <mat-icon>receipt_long</mat-icon>
+
+                        Print Invoice
+
+                    </button>
+            </div>
+        <!-- </div> -->
+    </div>
+</div>

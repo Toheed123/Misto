@@ -39,7 +39,6 @@ export class GoogleSheetService {
   }
 
   deleteExpense(data: any): Observable<any> {
-    console.log('Deleting expense with id:', data);
     return this.apiServices.Post(this.url, {
       route: 'deleteExpense',
       id: data

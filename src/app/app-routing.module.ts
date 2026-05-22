@@ -17,6 +17,7 @@ const routes: Routes = [
   { path : 'products' , loadChildren : () => import('./modules/product/product.module').then( m => m.ProductModule), canActivate :[AuthGuard]},
   {path : 'my-account', loadChildren : () => import('./modules/my-account/my-account.module').then(m => m.MyAccountModule),  canActivate :[AuthGuard]},
   {path : 'expences', loadChildren : () => import('./modules/expences/expences.module').then(m => m.ExpencesModule),  canActivate :[AuthGuard]},
+  {path : 'order', loadChildren : () => import('./modules/order/order.module').then(m => m.OrderModule),  canActivate :[AuthGuard]},
   //if url not found or match
 
   { path: '' , redirectTo : "/dashboard", pathMatch:'full'},
