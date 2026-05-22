@@ -39,6 +39,7 @@ export class DashboardComponent {
   orderChart :any = [];
   chartData: any;
   ordersChartData : any;
+  today = new Date();
   labelName = [
     'January',
     'February',
@@ -57,7 +58,7 @@ export class DashboardComponent {
   constructor() {}
 
   ngOnInit() {
-    this.createChart();
+    // this.createChart();
     this.chart = new Chart('barchart', {
       type: 'bar',
       data: this.chartData,
@@ -70,17 +71,17 @@ export class DashboardComponent {
       },
     });
 
-    this.orderChart = new Chart('orderChart', {
-      type: 'doughnut',
-      data: this.ordersChartData,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,             
-          },
-        },
-      },
-    });
+    // this.orderChart = new Chart('orderChart', {
+    //   type: 'doughnut',
+    //   data: this.ordersChartData,
+    //   options: {
+    //     scales: {
+    //       y: {
+    //         beginAtZero: true,             
+    //       },
+    //     },
+    //   },
+    // });
   }
 
   createChart() {

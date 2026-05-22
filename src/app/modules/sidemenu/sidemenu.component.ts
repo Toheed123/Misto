@@ -37,8 +37,7 @@ export class SideMenuComponent {
         {
             name : 'Order',
             navigationUrl : 'order',
-            IconClass : 'Material',
-            
+            IconClass : 'Material',            
             IconName: 'add_shopping_cart'
         },
         {
@@ -61,8 +60,8 @@ export class SideMenuComponent {
         this.appName = environment.appName;
         this.profileDetail = {
             profilePicturePath : "../../../assets/LOGO_3.jpg",
-            Name : 'Joe Miller',
-            email : 'Joe@flowHour.in'
+            Name : this.authenticationService.getAuthResult?.FirstName ,
+            email : this.authenticationService.getAuthResult?.Email
         }
     }
 
@@ -80,5 +79,14 @@ export class SideMenuComponent {
 
     logOut(){
         this.authenticationService.logOut();
+    }
+
+    getMenuItems(){
+        if(this.authenticationService.getAuthResult?.IsAdmin){
+            return this.menuItems;
+        }
+        else{
+            return this.menuItems.filter(x => x.name != 'Expenses');
+        }
     }
 }

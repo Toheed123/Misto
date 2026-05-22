@@ -1,15 +1,26 @@
-
-table {
-    width: 40%;
-  }
-  
-  tr.mat-mdc-footer-row td {
-    font-weight: bold;
-  }
-  
+ 
   .main-container{
-    padding: 10px
+    padding: 0px !important;
   }
+
+  .table-view{
+    display: table;
+  }
+
+  .table-hide{
+    display: none;
+    }
+
+.no-record{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    p{
+        font-size: 20px;
+        color: grey;
+    }
+}
 
 //   .table-containert{
 //     width: 50%
@@ -50,3 +61,11 @@ table {
 .ml-10{
   margin-left: 10px;
 }
+
+.floating-add-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+

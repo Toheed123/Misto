@@ -1,39 +1,91 @@
-<div class="main-container1">
-  <div class="main-container" fxLayout="row" fxLayoutAlign="space-around center">
+<div class="dashboard-container">
+
+  <div class="welcome-section">
+
+  <div class="welcome-text">
+
+    <h2>Welcome back, Toheed 👋</h2>
+
+    <p>Here’s what’s happening with your business today</p>
+
+  </div>
+
+  <div class="welcome-date">
+
+    <p>{{ today | date:'fullDate' }}</p>
+
+  </div>
+
+</div>
+
+  <!-- ===================== CARDS ===================== -->
+  <div class="card-grid">
+
     @for (data of dashboardContent; track data) {
-      <div style="width: 33.33%;">
-        <mat-card class="example-card color">
-          <mat-card-content>
-            <div class="container">
-              <div>
-                <img class="img-size" src='../../../assets/{{data.imagename}}'>
-              </div>
-              <div class="pl-15">
-                <p>{{data.name}}
-                  <p>
-                    @if (!data.amountYN) {
-                      <p class="count">{{data.Count}}</p>
-                    }
-                    @if (data.amountYN) {
-                      <p class="count">{{data.Count | currency }} </p>
-                    }
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
+
+      <mat-card class="dashboard-card">
+
+        <mat-card-content>
+
+          <div class="card-content">
+
+            <!-- ICON -->
+            <div class="icon-box">
+
+              <img class="icon-img"
+                   [src]="'../../../assets/' + data.imagename"
+                   alt="icon">
+
+            </div>
+
+            <!-- TEXT -->
+            <div class="info-box">
+
+              <p class="title">{{ data.name }}</p>
+
+              <p class="value">
+
+                @if (!data.amountYN) {
+                  {{ data.Count }}
+                }
+
+                @if (data.amountYN) {
+                  {{ data.Count | currency:'INR' }}
+                }
+
+              </p>
+
+            </div>
+
           </div>
-        }
-      </div>
-      <div class="chart-section">
-        <div >
-          <canvas id="barchart" class="bar-chart">{{chart}}</canvas>
-        </div>
-        <div >
-          <canvas id="orderChart" class="order-chart">{{orderChart}}</canvas>
-        </div>
 
-      </div>
+        </mat-card-content>
 
+      </mat-card>
 
+    }
 
-    </div>
+  </div>
+
+  <!-- ===================== CHART SECTION ===================== -->
+  <div class="chart-section">
+
+    <mat-card class="chart-card">
+
+      <mat-card-title>Sales Overview</mat-card-title>
+
+      <canvas id="barchart"></canvas>
+
+    </mat-card>
+
+    <mat-card class="chart-card">
+
+      <mat-card-title>Order Analytics</mat-card-title>
+
+      <!-- <canvas id="orderChart"></canvas> -->
+
+    </mat-card>
+
+  </div>
+
+</div>

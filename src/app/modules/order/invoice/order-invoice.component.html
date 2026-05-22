@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="total">
-                        <h2>Total: ₹ {{ order.TotalAmount }}</h2>
+                        <h2>Total: ₹ {{ (order.TotalAmount || 1) * (products[0].Quantity || 1)  }}</h2>
                     </div>
 
                 </div>

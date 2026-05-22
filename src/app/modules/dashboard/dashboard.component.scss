@@ -1,53 +1,128 @@
-
-.main-container{
-    display: flex;
-    // justify-content: space-between;    
+.dashboard-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.example-card {
-    max-width: 300px;
-    margin-bottom: 8px;
-    box-shadow: 10px 10px #C6C5D0;
-    cursor: pointer;
-  } 
 
-  .img-size{
-    width: 80px;
-    height: 80px
-  }
+/* ================= CARDS ================= */
 
-//   .color{
-//     background-color: lightgreen
-//   }
-.container{
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-content {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
 
-.pl-15{
-  padding-left: 15px;
+/* ICON */
+.icon-box {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  background: #f4f6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.count{
-  font-weight: bold;
+.icon-img {
+  width: 30px;
+  height: 30px;
 }
 
-.chart-section{
-  display: flex;  
-  margin-top: 30px;
-  justify-content: space-around;
+/* TEXT */
+.title {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
 }
 
-.bar-chart{
-  width: 850px !important;
-  height: 400px !important;
+.value {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #111;
 }
 
-.order-chart{
-  width: 370px;
-  height: 350px;
+/* ================= CHART ================= */
+
+.chart-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.main-container1{
+.chart-card {
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.chart-card canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .chart-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.welcome-section {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   padding: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
 }
 
+.welcome-text h2 {
+
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+
+}
+
+.welcome-text p {
+
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+
+}
+
+.welcome-date p {
+
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
+
+}

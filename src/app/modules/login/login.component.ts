@@ -25,27 +25,27 @@ export class LoginComponent {
       Email: 'toheeed@misto.com',
       PhoneNumber: 9898876543,
       AuthUserId: 145,
+      MenuItems: [
+        {
+          name: 'Dashboard',
+          navigationUrl: 'dashboard',
+          IconClass: 'Material',
+          IconName: 'dashboard',
+        },
+        {
+          name: 'Products',
+          navigationUrl: 'products',
+          IconClass: 'Material',
+          IconName: 'view_module',
+        },
+        {
+          name: 'Order',
+          navigationUrl: 'order',
+          IconClass: 'Material',
+          IconName: 'add_shopping_cart',
+        },
+      ],
     },
-    MenuItems: [
-      {
-        name: 'Dashboard',
-        navigationUrl: 'dashboard',
-        IconClass: 'Material',
-        IconName: 'dashboard',
-      },
-      {
-        name: 'Products',
-        navigationUrl: 'products',
-        IconClass: 'Material',
-        IconName: 'view_module',
-      },
-      {
-        name: 'Order',
-        navigationUrl: 'order',
-        IconClass: 'Material',
-        IconName: 'add_shopping_cart',
-      },
-    ],
     AppName: 'Misto',
   };
 

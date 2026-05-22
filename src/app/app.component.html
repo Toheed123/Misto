@@ -68,18 +68,27 @@
           <mat-icon>dark_mode</mat-icon>
         </button>
 
-        <div class="profile-mini">
+        <div class="profile-mini" [matMenuTriggerFor]="menu" title="more">
 
           <img
             src="../../../assets/LOGO_3.jpg"
             alt="profile">
 
-          <div class="profile-info">
-            <span class="profile-name">Joe Miller</span>
-            <span class="profile-role">Admin</span>
-          </div>
-
         </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="navigate('my-account')">
+            <mat-icon>account_circle</mat-icon>
+            <span>My Profile</span>
+          </button>
+          <button mat-menu-item (click)="navigate('my-account')">
+            <mat-icon>lock_reset</mat-icon>
+            <span>Change Password</span>
+          </button>
+          <button mat-menu-item (click)="logOut()">
+            <mat-icon>logout</mat-icon>
+            <span>LogOut</span>
+          </button>
+        </mat-menu>
 
       </div>
 

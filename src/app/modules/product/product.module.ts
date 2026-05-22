@@ -13,12 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductAddComponent } from './add/product-add.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProductDetailComponent } from './detail/product-detail.component';
 
 
 @NgModule({
   declarations: [
     ProductListComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

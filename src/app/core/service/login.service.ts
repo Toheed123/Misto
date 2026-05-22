@@ -15,6 +15,7 @@ export class LoginService {
       Email: 'toheeed@misto.com',
       PhoneNumber: 9898876543,
       AuthUserId: 145,
+      IsAdmin : true,
     },
     },
     {
@@ -26,6 +27,19 @@ export class LoginService {
       Email: 'misba@misto.com',
       PhoneNumber: 9898876543,
       AuthUserId: 146,
+      IsAdmin : false,
+    },
+    },
+    {
+      userName: 'saniya',
+      password: 'saniya123',
+      AuthUser: {
+      FirstName: 'Saniya',
+      LastName: 'Shaikh',
+      Email: 'saniya@misto.com',
+      PhoneNumber: 9898876543,
+      AuthUserId: 147,
+      IsAdmin : false,
     },
     }
   ]
