@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { AuthenticationService } from 'src/app/core/service/authentication.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -40,6 +41,7 @@ export class DashboardComponent {
   chartData: any;
   ordersChartData : any;
   today = new Date();
+  userName = '';
   labelName = [
     'January',
     'February',
@@ -55,7 +57,9 @@ export class DashboardComponent {
     'December',
   ];
 
-  constructor() {}
+  constructor(
+    private authenticationService : AuthenticationService
+  ) {}
 
   ngOnInit() {
     // this.createChart();
@@ -82,6 +86,7 @@ export class DashboardComponent {
     //     },
     //   },
     // });
+    this.userName = this.authenticationService.getAuthResult?.FirstName;
   }
 
   createChart() {
