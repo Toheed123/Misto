@@ -100,7 +100,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "public"
             ],
             "styles": [
               "src/styles.scss"
