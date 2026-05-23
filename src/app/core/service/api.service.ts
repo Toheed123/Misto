@@ -14,18 +14,18 @@ export class ApiService {
   }  
 
   Get(endpoint: string, data: any) : Observable<any> {
-    return this.http.get(this.baseUrl + endpoint, data);    
+    return this.http.get(endpoint, data);    
   }
 
   Post(endpoint: string, data: any) {
-    return this.http.post(this.baseUrl + endpoint, data);    
+    return this.http.post(endpoint, data);    
   }
 
   Put(endpoint: string, data: any) : Observable<any> {
-    return this.http.put(this.baseUrl + endpoint, data);    
+    return this.http.put(endpoint, data);    
   }
 
   Delete(endpoint: string) : Observable<any> {
-    return this.http.delete(this.baseUrl + endpoint);    
+    return this.http.delete(endpoint);    
   }
 }

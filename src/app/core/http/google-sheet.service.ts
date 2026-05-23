@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GoogleSheetService {
 
-  url: string = '/macros/s/AKfycbyQ-2H9SGhWi3atxvCWtd21UGlSbtbr2eTEmmUeSneVj0cFHRYjJbyZrJuZbl4ghUM/exec';
+  url: string = 'https://script.google.com/macros/s/AKfycbyQ-2H9SGhWi3atxvCWtd21UGlSbtbr2eTEmmUeSneVj0cFHRYjJbyZrJuZbl4ghUM/exec';
 
   constructor(private apiServices: ApiService) { }
   

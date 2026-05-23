@@ -7,7 +7,7 @@ import { ApiService } from '../service/api.service';
 })
 export class ProductService {
 
-  url: string = '/macros/s/AKfycbw-acdrcjNE5CVm1s2jQZ22-o4DBJcRoAIFv532g8-DLMHJS19NtjJsJXpjvJOWu8-7Zw/exec';
+  url: string = 'https://script.google.com/macros/s/AKfycbw-acdrcjNE5CVm1s2jQZ22-o4DBJcRoAIFv532g8-DLMHJS19NtjJsJXpjvJOWu8-7Zw/exec';
 
   constructor(private apiServices: ApiService) { }
 
