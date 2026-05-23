@@ -8,6 +8,8 @@ import { ApiService } from '../service/api.service';
 export class ProductService {
 
   url: string = 'https://script.google.com/macros/s/AKfycbw-acdrcjNE5CVm1s2jQZ22-o4DBJcRoAIFv532g8-DLMHJS19NtjJsJXpjvJOWu8-7Zw/exec';
+  proxyUrl : any =
+  'https://api.allorigins.win/raw?url=' + encodeURIComponent(this.url);
 
   constructor(private apiServices: ApiService) { }
 
@@ -17,7 +19,7 @@ export class ProductService {
 
   getProductList(): Observable<any> {
 
-    return this.apiServices.Post(this.url, {
+    return this.apiServices.Post(this.proxyUrl, {
       route: 'getProducts',
     });
 
@@ -29,7 +31,7 @@ export class ProductService {
 
   getProductById(id: any): Observable<any> {
 
-    return this.apiServices.Post(this.url, {
+    return this.apiServices.Post(this.proxyUrl, {
       route: 'getProductById',
       id: id
     });
@@ -42,7 +44,7 @@ export class ProductService {
 
   addProduct(data: any): Observable<any> {
 
-    return this.apiServices.Post(this.url, {
+    return this.apiServices.Post(this.proxyUrl, {
       route: 'addProduct',
       data: data
     });
@@ -55,7 +57,7 @@ export class ProductService {
 
   updateProduct(data: any): Observable<any> {
 
-    return this.apiServices.Post(this.url, {
+    return this.apiServices.Post(this.proxyUrl, {
       route: 'updateProduct',
       data: data
     });
@@ -68,7 +70,7 @@ export class ProductService {
 
   deleteProduct(id: any): Observable<any> {
 
-    return this.apiServices.Post(this.url, {
+    return this.apiServices.Post(this.proxyUrl, {
       route: 'deleteProduct',
       id: id
     });
